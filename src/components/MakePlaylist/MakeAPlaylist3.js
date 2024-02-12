@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Add this line to import axios
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactPieChart from '../building-blocks/PieChart';
-import Select from 'react-select';
+import { formStyles } from '../styles/formStyles';
 
 const Container = styled.div`
   display: flex;
@@ -14,7 +15,7 @@ const Container = styled.div`
   margin: 40px auto;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   gap: 20px;
 `;
 
@@ -39,42 +40,77 @@ const InfoParagraph = styled.p`
   width: 100%;
 `;
 
+const ErrorText = styled.span`
+  color: red;
+  font-size: 14px;
+`;
+const StyledSubmitButton = styled.button`
+  ${formStyles.StyledSubmitButton};
+`;
+
 const MakeAPlaylist3 = () => {
   const location = useLocation();
   const { formValues } = location.state || {};
   const [pieChartData, setPieChartData] = useState([]);
+  const [inputError, setInputError] = useState(false);
+  const [totalError, setTotalError] = useState(false);
 
   useEffect(() => {
-    const chartTypes = ['Global', 'Country', 'Genre'];
+    const chartTypes = ['Global', formValues.selectedCountry?.value, formValues.selectedGenre?.value];
     const values = {
       Global: formValues.includeGlobalCharts ? 33.33 : 0,
-      Country: formValues.selectedCountry ? 33.33 : 0,
-      Genre: formValues.selectedGenre ? 33.33 : 0,
+      [formValues.selectedCountry?.value]: formValues.selectedCountry ? 33.33 : 0,
+      [formValues.selectedGenre?.value]: formValues.selectedGenre ? 33.33 : 0,
     };
-    const selectedCharts = chartTypes.filter(type => values[type] > 0);
+    const selectedCharts = chartTypes.filter(type => type && values[type] > 0);
   
     if (selectedCharts.length > 1) {
       setPieChartData(selectedCharts.map(type => ({
         name: type,
-        value: 100 / selectedCharts.length,
+        value: values[type],
       })));
     }
   }, [formValues]);
 
   const handleSegmentChange = (segmentIndex, newValue) => {
     const newData = [...pieChartData];
-    newData[segmentIndex].value = newValue;
-    var remainingPercentage = 100 - newValue;
-    var remainingSegments = newData.length - 1;
-    newData.forEach((segment, index) => {
-      if (index !== segmentIndex) {
-        newData[index].value = remainingPercentage - (newData[index].value / 100 / remainingSegments);
-        remainingSegments = remainingSegments - 1;
-        remainingPercentage = remainingPercentage - newData[index].value
-      }
-    });
+    let totalValue = 0;
+    if (!newValue || newValue < 10 || newValue > 80) {
+      setInputError(true);
+      return;
+    } else {
+      setInputError(false);
+    }
+    newData[segmentIndex] = { ...newData[segmentIndex], value: newValue };
+    newData.forEach(segment => totalValue += segment.value);
+    if (totalValue !== 100) {
+      setTotalError(true);
+    } else {
+      setTotalError(false);
+    }
     setPieChartData(newData);
   };
+
+  const handleButtonClick = () => {
+    axios.get('http://localhost:8080/api/route', {
+      params: {
+        country: formValues.selectedCountry?.value,
+        genre: formValues.selectedGenre?.value,
+        includeGlobalCharts: formValues?.includeGlobalCharts
+      }
+    })
+    .then(response => {
+      const responseData = response.data;
+      console.log(responseData);
+      // Assuming you have a way to render the new component with the data
+      // For example, setting state in a parent component and passing data as props
+      renderNewComponent(<YourNewComponent data={responseData} />);
+    })
+    .catch(error => {
+      console.error('There was an error fetching the data:', error);
+    });
+  };
+  
 
   return (
     <Container>
@@ -82,21 +118,27 @@ const MakeAPlaylist3 = () => {
       {/* Display for selected country and genre */}
       
       <Heading>Chart Distribution</Heading>
-      {pieChartData.length > 0 && (
-        <ChartContainer>
-          <ReactPieChart data={pieChartData} onSegmentChange={handleSegmentChange} />
-        </ChartContainer>
-      )}
       {pieChartData.map((segment, index) => (
-        <div key={`dropdown-${index}`}>
-          <span>{segment.name}: </span>
-          <Select
-            value={{ label: `${Math.round(segment.value)}%`, value: segment.value }}
-            onChange={(selectedOption) => handleSegmentChange(index, selectedOption.value)}
-            options={[...Array(15).keys()].map((value) => ({ label: `${value * 5 + 10}%`, value: value * 5 + 10 }))}
+        <div key={`input-${index}`} style={{ margin: '10px 0', display: 'flex', alignItems: 'center' }}>
+          <span style={{ marginRight: '10px' }}>{segment.name}: </span>
+          <input
+            type="number"
+            placeholder={`${segment.value}%`}
+            onChange={(e) => handleSegmentChange(index, Number(e.target.value))}
+            min="10"
+            max="80"
+            style={{ width: '80px', padding: '5px' }}
           />
         </div>
       ))}
+      {inputError && <ErrorText>Please enter a value between 10 and 80</ErrorText>}
+      {totalError && <ErrorText>Total segment values must add up to 100</ErrorText>}
+      {pieChartData.length > 0 && !totalError && (
+        <ChartContainer>
+          <ReactPieChart data={pieChartData} onSegmentChange={handleSegmentChange} />
+          <StyledSubmitButton type="submit" onClick={handleButtonClick}>Generate Chart</StyledSubmitButton>
+        </ChartContainer>
+      )}
     </Container>
   );
 };
