@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import ReactPieChart from '../building-blocks/PieChart';
+import Select from 'react-select';
 
 const Container = styled.div`
   display: flex;
@@ -38,19 +39,10 @@ const InfoParagraph = styled.p`
   width: 100%;
 `;
 
-const NumberPickerContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-`;
-
 const MakeAPlaylist3 = () => {
   const location = useLocation();
   const { formValues } = location.state || {};
   const [pieChartData, setPieChartData] = useState([]);
-  const [sliderValue, setSliderValue] = useState(50); // State for the slider value
 
   useEffect(() => {
     const chartTypes = ['Global', 'Country', 'Genre'];
@@ -69,6 +61,21 @@ const MakeAPlaylist3 = () => {
     }
   }, [formValues]);
 
+  const handleSegmentChange = (segmentIndex, newValue) => {
+    const newData = [...pieChartData];
+    newData[segmentIndex].value = newValue;
+    var remainingPercentage = 100 - newValue;
+    var remainingSegments = newData.length - 1;
+    newData.forEach((segment, index) => {
+      if (index !== segmentIndex) {
+        newData[index].value = remainingPercentage - (newData[index].value / 100 / remainingSegments);
+        remainingSegments = remainingSegments - 1;
+        remainingPercentage = remainingPercentage - newData[index].value
+      }
+    });
+    setPieChartData(newData);
+  };
+
   return (
     <Container>
       <Heading>Selected Playlist Criteria</Heading>
@@ -76,23 +83,20 @@ const MakeAPlaylist3 = () => {
       
       <Heading>Chart Distribution</Heading>
       {pieChartData.length > 0 && (
-        <>
-          <ChartContainer>
-            <ReactPieChart data={pieChartData} />
-          </ChartContainer>
-          <NumberPickerContainer>
-            <span>1</span>
-            <input
-              type="range"
-              min="1"
-              max="100"
-              value={sliderValue}
-              onChange={(e) => setSliderValue(e.target.value)}
-            />
-            <span>100</span>
-          </NumberPickerContainer>
-        </>
+        <ChartContainer>
+          <ReactPieChart data={pieChartData} onSegmentChange={handleSegmentChange} />
+        </ChartContainer>
       )}
+      {pieChartData.map((segment, index) => (
+        <div key={`dropdown-${index}`}>
+          <span>{segment.name}: </span>
+          <Select
+            value={{ label: `${Math.round(segment.value)}%`, value: segment.value }}
+            onChange={(selectedOption) => handleSegmentChange(index, selectedOption.value)}
+            options={[...Array(15).keys()].map((value) => ({ label: `${value * 5 + 10}%`, value: value * 5 + 10 }))}
+          />
+        </div>
+      ))}
     </Container>
   );
 };
