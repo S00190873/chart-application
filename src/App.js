@@ -12,6 +12,7 @@ import Footer from './components/HeaderFooter/Footer';
 import MakeAPlaylist from './components/MakePlaylist/MakeAPlaylist';
 import MakeAPlaylist2 from './components/MakePlaylist/MakeAPlaylist2';
 import MakeAPlaylist3 from './components/MakePlaylist/MakeAPlaylist3';
+import MakeAPlaylist4 from './components/MakePlaylist/MakeAPlaylist4';  
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
 
@@ -41,6 +42,7 @@ const App = () => {
             <Route path="/make-playlist" element={<MakeAPlaylist />} />
             <Route path="/make-playlist2" element={<MakeAPlaylist2 />} />
             <Route path="/make-playlist3" element={<MakeAPlaylist3 />} />
+            <Route path="/make-playlist4" element={<MakeAPlaylist4 />} />
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUp />} />
           </Routes>

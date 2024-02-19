@@ -14,6 +14,15 @@ export const formStyles = {
     border-radius: 8px;
     text-align: center;
   `,
+
+  chartContainer: `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 400px;
+`,
   field: `
     padding: 15px;
     &:focus {
@@ -52,6 +61,7 @@ export const formStyles = {
     font-size: 20px;
   `,
   submitButton: `
+    margin-top: 20px;
     background-color: #007bff;
     color: white;
     padding: 15px 30px;
@@ -71,7 +81,6 @@ export const formStyles = {
     border-bottom: 2px solid #007bff;
     padding-bottom: 0.5rem;
   `,
-  // New styles added here
   StyledContainer: `
     position: relative;
     text-align: center;
@@ -91,43 +100,60 @@ export const formStyles = {
     margin-bottom: 20px;
     font-size: 32px;
   `,
-  StyledSubmitButton: `
-    background-color: #0056b3;
-    border: none;
-    color: white;
-    padding: 10px 24px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
-    border-radius: 4px;
+  StyledThumb: `
+  height: 30px;
+  line-height: 30px;
+  width: 30px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  cursor: grab;
+  font-size: 12px;
+`,
+  StyledTrack: `
+  top: 0;
+  bottom: 0;
+  background: ${(props) =>
+    props.index === 2 ? "#ddd" : props.index === 1 ? "#0056b3" : "#ddd"};
+  border-radius: 999px;
+`,
+  StyledBox: `
+  border: 2px solid #0056b3;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   `,
-  // New React Select custom styles
   customSelectStyles: {
     control: (base) => ({
       ...base,
-      minHeight: 56, // Adjust the height of the select input
+      minHeight: 56,
     }),
     dropdownIndicator: (base) => ({
       ...base,
-      padding: 8, // Adjust the padding for the dropdown indicator
+      padding: 8,
     }),
     clearIndicator: (base) => ({
       ...base,
-      padding: 8, // Adjust the padding for the clear indicator
+      padding: 8,
     }),
     valueContainer: (base) => ({
       ...base,
-      padding: '0px 8px', // Adjust the padding for the value container
+      padding: "0px 8px",
     }),
     option: (base) => ({
       ...base,
-      borderBottom: '1px dotted #ccc', // Style for options
-      padding: '10px 20px', // Padding for options
-      '&:hover': {
-        backgroundColor: '#f8f8f8', // Background color on hover for options
+      borderBottom: "1px dotted #ccc",
+      padding: "10px 20px",
+      "&:hover": {
+        backgroundColor: "#f8f8f8",
       },
     }),
   },
