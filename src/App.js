@@ -15,7 +15,11 @@ import MakeAPlaylist3 from './components/MakePlaylist/MakeAPlaylist3';
 import MakeAPlaylist4 from './components/MakePlaylist/MakeAPlaylist4';  
 import Login from './components/Authentication/Login';
 import SignUp from './components/Authentication/SignUp';
+import MakeAPlaylistYearSelector from './components/MakePlaylist/MakePlaylistYearSelector';
+import RIAAPage from './components/RIAAPage/RIAAPage'; // Import the RIAA Certified Page
+import ForgotPassword from './components/Authentication/ForgotPassword'; // Import the Forgot Password Page
 
+// Styled components for app layout
 const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,14 +41,17 @@ const App = () => {
             <Route path="/global-charts" element={<GlobalChartsPage />} />
             <Route path="/country-charts" element={<ChooseCountryChartsPage />} />
             <Route path="/genre-charts" element={<ChooseGenreChartsPage />} />
-            <Route path="/country-chart/:countryName/:flag" element={<CountryChartPage />} /> {/* Corrected */}
+            <Route path="/country-chart/:countryName/:flag" element={<CountryChartPage />} /> 
             <Route path="/genre-chart/:genreName/:color" element={<GenreChartsPage />} />
             <Route path="/make-playlist" element={<MakeAPlaylist />} />
             <Route path="/make-playlist2" element={<MakeAPlaylist2 />} />
+            <Route path="/make-playlist-year-selector" element={<MakeAPlaylistYearSelector />} /> 
             <Route path="/make-playlist3" element={<MakeAPlaylist3 />} />
             <Route path="/make-playlist4" element={<MakeAPlaylist4 />} />
+            <Route path="/riaa-certified" element={<RIAAPage />} /> {/* RIAA Certified Page Route */}
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} /> {/* Forgot Password Route */}
           </Routes>
         </MainContent>
         <Footer />

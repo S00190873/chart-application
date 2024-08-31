@@ -1,3 +1,4 @@
+// MakeAPlaylist2.js
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Select, { components } from "react-select";
@@ -24,8 +25,7 @@ const FlagOption = (props) => (
 const MakeAPlaylist2 = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const formValues = location.state?.formValues;
-  console.log(formValues);
+  const formValues = location.state?.formValues || {};
 
   const countryOptions = countries.map((country) => ({
     value: country.name,
@@ -41,19 +41,16 @@ const MakeAPlaylist2 = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [selectedGenre, setSelectedGenre] = useState(null);
 
-  const handleCountryChange = (selectedOption) =>
-    setSelectedCountry(selectedOption);
-  const handleGenreChange = (selectedOption) =>
-    setSelectedGenre(selectedOption);
+  const handleCountryChange = (selectedOption) => setSelectedCountry(selectedOption);
+  const handleGenreChange = (selectedOption) => setSelectedGenre(selectedOption);
 
   const handleButtonClick = () => {
-    navigate("/make-playlist3", {
+    navigate("/make-playlist-year-selector", {
       state: {
         formValues: {
+          ...formValues,
           selectedCountry,
           selectedGenre,
-          includeGlobalCharts: formValues.includeGlobalCharts,
-          years: formValues.years,
         },
       },
     });
@@ -63,7 +60,7 @@ const MakeAPlaylist2 = () => {
     <div className="styled-container">
       <h2 className="instruction-text">Choose your options</h2>
       <form>
-        {formValues?.includeCountryCharts && (
+        {formValues.includeCountryCharts && (
           <>
             <p className="data-paragraph">Select a Country:</p>
             <Select
@@ -78,7 +75,7 @@ const MakeAPlaylist2 = () => {
             />
           </>
         )}
-        {formValues?.includeGenreCharts && (
+        {formValues.includeGenreCharts && (
           <>
             <p className="data-paragraph">Select a Genre:</p>
             <Select
@@ -92,12 +89,8 @@ const MakeAPlaylist2 = () => {
             />
           </>
         )}
-        {(formValues.includeCountryCharts && formValues.includeGenreCharts &&
-          selectedCountry && selectedGenre) ||
-          (formValues.includeCountryCharts && !formValues.includeGenreCharts &&
-            selectedCountry) ||
-          (formValues.includeCountryCharts && formValues.includeGenreCharts &&
-            selectedGenre) ? (
+        {((formValues.includeCountryCharts && selectedCountry) || !formValues.includeCountryCharts) &&
+         ((formValues.includeGenreCharts && selectedGenre) || !formValues.includeGenreCharts) ? (
           <button
             type="button"
             className="submit-button"

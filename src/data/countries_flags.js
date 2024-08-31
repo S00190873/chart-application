@@ -9,15 +9,11 @@ export const countries_flags = [
   { name: "Finland Singles Top 20", flag: "fi" },
   { name: "France Singles Top 100", flag: "fr" },
   { name: "Ireland Singles Top 100", flag: "ie" },
-  { name: "Italy Singles Top 50", flag: "it" },
-  { name: "New Zealand Top 40", flag: "nz" },
   { name: "Norway Singles Top 20", flag: "no" },
   { name: "Portugal Singles Top 50", flag: "pt" },
-  { name: "Spain Singles Top 50", flag: "es" },
   { name: "Sweden Singles Top 100", flag: "se" },
   { name: "Swiss Singles Top 100", flag: "ch" },
   { name: "UK Singles Top 75", flag: "gb" },
-  { name: "US Airplay Top 100", flag: "us" },
   { name: "US Singles Top 100", flag: "us" }
 ];
 
@@ -33,11 +29,8 @@ export const countries = [
   { name: "Finland", flag: "fi" },
   { name: "France", flag: "fr" },
   { name: "Ireland", flag: "ie" },
-  { name: "Italy", flag: "it" },
-  { name: "New Zealand", flag: "nz" },
   { name: "Norway", flag: "no" },
   { name: "Portugal", flag: "pt" },
-  { name: "Spain", flag: "es" },
   { name: "Sweden", flag: "se" },
   { name: "Switzerland", flag: "ch" },
   { name: "United Kingdom", flag: "gb" },

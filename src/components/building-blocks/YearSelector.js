@@ -1,23 +1,23 @@
 import React from "react";
 import Select from "react-select";
 
-const YearSelector = ({ selectedYear, handleYearChange }) => {
-  const currentYear = new Date().getFullYear();
-
-  // Generate options for the select component
-  const options = Array.from({ length: 22 }, (_, i) => currentYear - i).map(
-    (year) => ({
+const YearSelector = ({ selectedYear, handleYearChange, availableYears, includeAllOption = false }) => {
+  // Sort years in descending order and generate options
+  const sortedYears = [...availableYears].sort((a, b) => b - a);
+  const options = [
+    ...(includeAllOption ? [{ value: "ALL", label: "ALL" }] : []), // Conditionally add ALL option
+    ...sortedYears.map((year) => ({
       value: year,
       label: year.toString(),
-    })
-  );
+    })),
+  ];
 
   // Custom styles for the select component
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
-      width: "150px", // Adjust the width here
-      margin: "0 auto", // Center horizontally
+      width: "200px",
+      margin: "0 auto",
       backgroundColor: "#f7fafc",
       borderColor: state.isFocused ? "#4f46e5" : "#cbd5e0",
       boxShadow: state.isFocused ? "0 0 0 1px #4f46e5" : "none",
@@ -40,7 +40,7 @@ const YearSelector = ({ selectedYear, handleYearChange }) => {
     <div className="text-center mb-8">
       <Select
         options={options}
-        value={{ value: selectedYear, label: selectedYear.toString() }}
+        value={{ value: selectedYear, label: selectedYear === "ALL" ? "ALL" : selectedYear.toString() }}
         onChange={(selectedOption) => handleYearChange(selectedOption.value)}
         styles={customStyles}
         className="react-select-container"

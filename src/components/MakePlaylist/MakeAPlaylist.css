@@ -36,8 +36,14 @@
   margin: 10px 0;
 }
 
+.error-container {
+  margin-top: 10px;
+  color: red;
+}
+
 .error-message {
-  color: #ff0000;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .example-thumb {
@@ -70,8 +76,8 @@
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally in flex column mode */
-  justify-content: center; /* Center vertically */
+  align-items: center;
+  justify-content: center;
   gap: var(--gap-size);
   margin: 2rem auto;
   max-width: 600px;
@@ -100,6 +106,7 @@
   margin-top: 2rem;
   padding-bottom: 0.5rem;
   text-align: center;
+  color: #004c8c;
 }
 
 .label {
@@ -109,6 +116,9 @@
   font-size: 20px;
   font-weight: bold;
   justify-content: center;
+  margin-right: 10px;
+  min-width: 100px;
+  text-align: right;
 }
 
 .select {
@@ -148,6 +158,7 @@
   padding: 20px;
   position: relative;
   text-align: center;
+  background-color: #f4f4f4;
 }
 
 .styled-thumb {
@@ -181,4 +192,109 @@
 
 .year-range-text {
   font-size: 20px;
+}
+
+.playlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.playlist-table th,
+.playlist-table td {
+  border: 1px solid #dddddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.playlist-table th {
+  background-color: #004c8c;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.playlist-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.playlist-table tr:hover {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .styled-container {
+    width: 95%;
+  }
+
+  .instruction-text {
+    font-size: 1.2em;
+  }
+
+  .playlist-table th,
+  .playlist-table td {
+    padding: 10px;
+  }
+}
+/* General styles */
+:root {
+  --border-color: #ccc;
+  --border-radius: 8px;
+  --box-shadow: 0px 0px 8px #ccc;
+  --field-padding: 15px;
+  --gap-size: 30px;
+  --main-bg-color: #fff;
+  --main-padding: 2rem;
+}
+
+/* Styles specific to MakeAPlaylist4 component */
+.make-a-playlist-4-container {
+  max-width: 90%; /* Make the container wider */
+  width: 85%; /* Adjust width for responsiveness */
+  padding: 30px; /* Extra padding for a spacious look */
+  border: 2px solid #aaa; /* Slightly darker border for distinction */
+  background-color: #f4f4f4; /* Consistent background color */
+}
+
+.make-a-playlist-4-container .playlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.make-a-playlist-4-container .playlist-table th,
+.make-a-playlist-4-container .playlist-table td {
+  border: 1px solid #dddddd;
+  padding: 15px; /* Increased padding for readability */
+  text-align: left;
+}
+
+.make-a-playlist-4-container .playlist-table th {
+  background-color: #004c8c;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.make-a-playlist-4-container .playlist-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.make-a-playlist-4-container .playlist-table tr:hover {
+  background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .make-a-playlist-4-container {
+    width: 95%;
+  }
+
+  .make-a-playlist-4-container .instruction-text {
+    font-size: 1.2em;
+  }
+
+  .make-a-playlist-4-container .playlist-table th,
+  .make-a-playlist-4-container .playlist-table td {
+    padding: 10px;
+  }
 }
