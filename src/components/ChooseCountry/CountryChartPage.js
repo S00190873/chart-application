@@ -28,7 +28,7 @@ const CountryChartPage = () => {
     "Norway Singles Top 20": "Norway",
     "Portugal Singles Top 50": "Portugal",
     "Sweden Singles Top 100": "Sweden",
-    "Swiss Singles Top 100": "Switzerland",
+    "Swiss Singles Top 100": "Swiss",
     "UK Singles Top 75": "UK",
     "US Singles Top 100": "US",
   };

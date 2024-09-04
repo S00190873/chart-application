@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const fetchAvailableYears = async (chartName) => {
   try {
-    const response = await axios.get("http://127.0.0.1:5000/get_available_years", {
+    const response = await axios.get("https://djplaylistcurator.com/api/get_available_years", {
       params: { chart_name: chartName.toLowerCase() },
     });
     return response.data; // Return the array of available years
@@ -15,7 +15,7 @@ export const fetchAvailableYears = async (chartName) => {
 export const fetchAvailableYearsRIAA = async (certificationType) => {
   try {
     console.log(`Making request to: /get_available_years_riaa?certificationType=${certificationType}`);
-    const response = await fetch(`http://127.0.0.1:5000/get_available_years_riaa?certificationType=${certificationType}`);
+    const response = await fetch(`https://djplaylistcurator.com/api/get_available_years_riaa?certificationType=${certificationType}`);
     
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -53,7 +53,7 @@ export const fetchRIAAData = async (certificationType, year = null, genre = null
       params.genre = genre;
     }
 
-    const response = await axios.get("http://127.0.0.1:5000/get_riaa_data", {
+    const response = await axios.get("https://djplaylistcurator.com/api/get_riaa_data", {
       params: params,
     });
 
@@ -65,8 +65,9 @@ export const fetchRIAAData = async (certificationType, year = null, genre = null
 };
 
 export const fetchData = async (chartName, selectedYear) => {
+  console.log(`Making request to: /getchart?parameter=${chartName.toLowerCase()}&year=${selectedYear}`);
   try {
-    const response = await axios.get("http://127.0.0.1:5000/getchart", {
+    const response = await axios.get("https://djplaylistcurator.com/api/getchart", {
       params: {
         parameter: chartName.toLowerCase(),
         year: selectedYear,
@@ -82,7 +83,7 @@ export const fetchData = async (chartName, selectedYear) => {
 // New function to fetch available genres
 export const fetchAvailableGenres = async () => {
   try {
-    const response = await axios.get("http://127.0.0.1:5000/get_available_genres");
+    const response = await axios.get("https://djplaylistcurator.com/api/get_available_genres");
     return response.data; // Return the array of available genres
   } catch (err) {
     console.error("Error fetching available genres:", err);

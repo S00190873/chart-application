@@ -31,7 +31,7 @@ const RIAAPage = () => {
   const [error, setError] = useState(null);
   const [selectedCertification, setSelectedCertification] = useState("Diamond");
   const [loading, setLoading] = useState(false); // Loading state
-  const [selectedGenre, setSelectedGenre] = useState("All Genres"); // Genre state
+  const [selectedGenre, setSelectedGenre] = useState("ALL"); // Genre state
 
   const handleYearChange = (year) => {
     if (year) {
@@ -68,7 +68,7 @@ const RIAAPage = () => {
     setLoading(true); // Set loading to true at the start of the fetch
     try {
       let data;
-      const genreParam = selectedGenre === "All Genres" ? null : selectedGenre; // Only add genre if not "All Genres"
+      const genreParam = selectedGenre === "ALL" ? null : selectedGenre; // Only add genre if not "All Genres"
       if (selectedYear === "ALL") {
         // Fetch data for all years if "ALL" is selected
         data = await fetchRIAAData(selectedCertification.toLowerCase(), null, genreParam);

@@ -30,7 +30,9 @@ const MakeAPlaylist4 = () => {
             key={index}
             className="bg-white text-black p-4 md:p-4 rounded-lg shadow-md transition duration-300 hover:shadow-lg"
             style={{ transform: "scale(1)", transition: "transform 0.2s" }}
-            onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.02)")}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.transform = "scale(1.02)")
+            }
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <div className="flex flex-col md:flex-row items-center justify-between">
@@ -51,10 +53,10 @@ const MakeAPlaylist4 = () => {
               </div>
               <div className="flex-1 text-center md:flex md:items-center md:justify-start">
                 <div className="flex items-center justify-start text-left space-x-3">
-                  <p className="text-lg font-semibold text-gray-900 ml-6">Rank Score:</p>
-                  <div
-                    className="w-14 h-14 flex items-center justify-center bg-indigo-600 text-white rounded-full text-lg font-bold"
-                  >
+                  <p className="text-lg font-semibold text-gray-900 ml-6">
+                    Rank Score:
+                  </p>
+                  <div className="w-14 h-14 flex items-center justify-center bg-indigo-600 text-white rounded-full text-lg font-bold">
                     {item[3].toFixed(4)}
                   </div>
                 </div>
@@ -103,13 +105,18 @@ const MakeAPlaylist4 = () => {
                       className="mb-1"
                     />
                     <p className="text-center text-base font-semibold text-gray-800">
-                      {`${item[6]} x ${item[5]}`}
+                      {item[5] === "Gold"
+                        ? `${item[5]}`
+                        : item[5] === "Diamond"
+                        ? `${Math.round(item[6] / 10)} x ${item[5]}`
+                        : `${item[6]} x ${item[5]}`}
                     </p>
+
                     <p className="text-center text-xs text-gray-600">
-                      {`${
-                        item[6] *
-                        (item[5] === "Gold" ? 0.5 : item[5] === "Platinum" ? 1 : 10)
-                      } million units`}
+                      {item[5] === "Gold"
+                        ? `${item[6] + 0.5} x million units`
+                        : `${item[6]} x million units`
+                        }
                     </p>
                     {item[7] && (
                       <p className="text-center text-xs text-gray-500 italic">

@@ -76,9 +76,9 @@ const MakeAPlaylist3 = () => {
 
     const queryString = `${yearsQuery}${queries.length > 0 ? '&' + queries.join('&') : ''}`;
 
-    console.log(`Request URL: http://127.0.0.1:5000/get_info?${queryString}`);
+    console.log(`Request URL: https://djplaylistcurator.com/api/get_info?${queryString}`);
 
-    axios.get(`http://127.0.0.1:5000/get_info?${queryString}`)
+    axios.get(`https://djplaylistcurator.com/api/get_info?${queryString}`)
       .then(response => {
         const responseData = response.data;
         console.log(responseData);

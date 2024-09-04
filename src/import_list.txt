@@ -1,0 +1,171 @@
+App.js:import React from 'react';
+App.js:import { BrowserRouter, Routes, Route } from 'react-router-dom';
+App.js:import styled from 'styled-components'; // Import styled from styled-components
+App.js:import Header from './components/HeaderFooter/Header';
+App.js:import HomePage from './components/HomePage/HomePage';
+App.js:import GlobalChartsPage from './components/GlobalCharts/GlobalChartsPage';
+App.js:import ChooseCountryChartsPage from './components/ChooseCountry/ChooseCountryChartsPage';
+App.js:import GenreChartsPage from './components/ChooseGenre/GenreChartsPage';
+App.js:import CountryChartPage from './components/ChooseCountry/CountryChartPage'; // Assuming this is the correct component
+App.js:import ChooseGenreChartsPage from './components/ChooseGenre/ChooseGenreChartsPage';
+App.js:import Footer from './components/HeaderFooter/Footer';
+App.js:import MakeAPlaylist from './components/MakePlaylist/MakeAPlaylist';
+App.js:import MakeAPlaylist2 from './components/MakePlaylist/MakeAPlaylist2';
+App.js:import MakeAPlaylist3 from './components/MakePlaylist/MakeAPlaylist3';
+App.js:import MakeAPlaylist4 from './components/MakePlaylist/MakeAPlaylist4';  
+App.js:import Login from './components/Authentication/Login';
+App.js:import SignUp from './components/Authentication/SignUp';
+App.js:import MakeAPlaylistYearSelector from './components/MakePlaylist/MakePlaylistYearSelector';
+App.js:import RIAAPage from './components/RIAAPage/RIAAPage'; // Import the RIAA Certified Page
+App.js:import ForgotPassword from './components/Authentication/ForgotPassword'; // Import the Forgot Password Page
+App.test.js:import { render, screen } from '@testing-library/react';
+App.test.js:import App from './App';
+components\Authentication\ForgotPassword.js:import React, { useState } from 'react';
+components\Authentication\ForgotPassword.js:import { sendPasswordResetEmail } from 'firebase/auth';
+components\Authentication\ForgotPassword.js:import { auth } from '../../firebase'; // Import the auth instance
+components\Authentication\ForgotPassword.js:import { useNavigate } from 'react-router-dom';
+components\Authentication\ForgotPassword.js:import { TextField, Button, Typography, Container, Box } from '@mui/material';
+components\Authentication\ForgotPassword.js:import { ToastContainer, toast } from 'react-toastify';
+components\Authentication\ForgotPassword.js:import 'react-toastify/dist/ReactToastify.css';
+components\Authentication\Login.js:﻿import React from 'react';
+components\Authentication\Login.js:import Avatar from '@mui/material/Avatar';
+components\Authentication\Login.js:import Button from '@mui/material/Button';
+components\Authentication\Login.js:import CssBaseline from '@mui/material/CssBaseline';
+components\Authentication\Login.js:import TextField from '@mui/material/TextField';
+components\Authentication\Login.js:import FormControlLabel from '@mui/material/FormControlLabel';
+components\Authentication\Login.js:import Checkbox from '@mui/material/Checkbox';
+components\Authentication\Login.js:import Link from '@mui/material/Link';
+components\Authentication\Login.js:import Grid from '@mui/material/Grid';
+components\Authentication\Login.js:import Box from '@mui/material/Box';
+components\Authentication\Login.js:import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+components\Authentication\Login.js:import Typography from '@mui/material/Typography';
+components\Authentication\Login.js:import Container from '@mui/material/Container';
+components\Authentication\Login.js:import { createTheme, ThemeProvider } from '@mui/material/styles';
+components\Authentication\Login.js:import { ToastContainer, toast } from 'react-toastify';
+components\Authentication\Login.js:import 'react-toastify/dist/ReactToastify.css';
+components\Authentication\Login.js:import { signInWithEmailAndPassword } from 'firebase/auth';
+components\Authentication\Login.js:import { auth } from '../../firebase';
+components\Authentication\Login.js:import { useNavigate } from 'react-router-dom';
+components\Authentication\SignUp.js:﻿import React, { useState } from 'react';
+components\Authentication\SignUp.js:import { useNavigate } from 'react-router-dom';
+components\Authentication\SignUp.js:import Avatar from '@mui/material/Avatar';
+components\Authentication\SignUp.js:import Button from '@mui/material/Button';
+components\Authentication\SignUp.js:import CssBaseline from '@mui/material/CssBaseline';
+components\Authentication\SignUp.js:import TextField from '@mui/material/TextField';
+components\Authentication\SignUp.js:import FormControlLabel from '@mui/material/FormControlLabel';
+components\Authentication\SignUp.js:import Checkbox from '@mui/material/Checkbox';
+components\Authentication\SignUp.js:import Link from '@mui/material/Link';
+components\Authentication\SignUp.js:import Grid from '@mui/material/Grid';
+components\Authentication\SignUp.js:import Box from '@mui/material/Box';
+components\Authentication\SignUp.js:import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+components\Authentication\SignUp.js:import Typography from '@mui/material/Typography';
+components\Authentication\SignUp.js:import Container from '@mui/material/Container';
+components\Authentication\SignUp.js:import { createTheme, ThemeProvider } from '@mui/material/styles';
+components\Authentication\SignUp.js:import { ToastContainer, toast } from 'react-toastify';
+components\Authentication\SignUp.js:import 'react-toastify/dist/ReactToastify.css';
+components\Authentication\SignUp.js:import { auth } from '../../firebase'; // Import the auth instance
+components\Authentication\SignUp.js:import { createUserWithEmailAndPassword } from 'firebase/auth'; // Import the Firebase method
+components\building-blocks\PieChart.js:import React from 'react';
+components\building-blocks\PieChart.js:import { PieChart, Pie, Cell, Legend, ResponsiveContainer } from 'recharts';
+components\building-blocks\YearSelector.js:import React from "react";
+components\building-blocks\YearSelector.js:import Select from "react-select";
+components\ChooseCountry\ChooseCountryChartsPage.js:import React from "react";
+components\ChooseCountry\ChooseCountryChartsPage.js:import { Link } from "react-router-dom"; // Import Link component
+components\ChooseCountry\ChooseCountryChartsPage.js:import CountryFlag from "react-country-flag"; // Import react-country-flag
+components\ChooseCountry\ChooseCountryChartsPage.js:import { countries_flags } from "../../data/countries_flags";
+components\ChooseCountry\CountryChartPage.js:import React, { useState, useEffect, useCallback } from "react";
+components\ChooseCountry\CountryChartPage.js:import { useParams } from "react-router-dom";
+components\ChooseCountry\CountryChartPage.js:import CountryFlag from "react-country-flag";
+components\ChooseCountry\CountryChartPage.js:import YearSelector from "../building-blocks/YearSelector";
+components\ChooseCountry\CountryChartPage.js:import { useTable } from "react-table";
+components\ChooseCountry\CountryChartPage.js:import { fetchAvailableYears, fetchData as fetchChartData } from "../utils/chartUtils"; // Rename the import to avoid conflicts
+components\ChooseGenre\ChooseGenreChartsPage.js:import React from "react";
+components\ChooseGenre\ChooseGenreChartsPage.js:import { Link } from "react-router-dom"; // Import Link component
+components\ChooseGenre\ChooseGenreChartsPage.js:import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import FontAwesomeIcon
+components\ChooseGenre\ChooseGenreChartsPage.js:import { faCompactDisc } from "@fortawesome/free-solid-svg-icons"; // Import the compact disc icon from Font Awesome
+components\ChooseGenre\ChooseGenreChartsPage.js:import { genres_and_colors } from "../../data/genres"; // Import genre data
+components\ChooseGenre\GenreChartsPage.js:import React, { useState, useEffect, useCallback } from "react";
+components\ChooseGenre\GenreChartsPage.js:import { useParams } from "react-router-dom";
+components\ChooseGenre\GenreChartsPage.js:import YearSelector from "../building-blocks/YearSelector";
+components\ChooseGenre\GenreChartsPage.js:import { useTable } from "react-table";
+components\ChooseGenre\GenreChartsPage.js:import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+components\ChooseGenre\GenreChartsPage.js:import { faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+components\ChooseGenre\GenreChartsPage.js:import { fetchAvailableYears, fetchData } from "../utils/chartUtils";
+components\GlobalCharts\GlobalChartsPage.js:import React, { useState, useEffect, useCallback } from "react";
+components\GlobalCharts\GlobalChartsPage.js:import ChartContent from "../HomePage/ChartContent";
+components\GlobalCharts\GlobalChartsPage.js:import YearSelector from "../building-blocks/YearSelector";
+components\GlobalCharts\GlobalChartsPage.js:import { fetchAvailableYears, fetchData } from "../utils/chartUtils"; // Import utility functions
+components\HeaderFooter\Footer.js:import React from 'react';
+components\HeaderFooter\Footer.js:import { FaLinkedin, FaGithub, FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
+components\HeaderFooter\Header.js:import React, { useState, useEffect } from 'react';
+components\HeaderFooter\Header.js:import { Link } from 'react-router-dom';
+components\HeaderFooter\Header.js:import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+components\HeaderFooter\Header.js:import { faHome, faGlobe, faFlag, faMusic, faSignInAlt, faUserPlus, faCompactDisc, faBars, faTimes, faSignOutAlt, faTrophy } from '@fortawesome/free-solid-svg-icons';
+components\HeaderFooter\Header.js:import { auth } from '../../firebase'; // Import the auth instance
+components\HeaderFooter\Header.js:import { onAuthStateChanged, signOut } from 'firebase/auth'; // Import Firebase auth functions
+components\HeaderFooter\Header.js:import alienDJImage from '../../data/alien.jpg'; // Import the alien DJ image
+components\HomePage\ChartContent.js:import React from "react";
+components\HomePage\ChartContent.js:import PropTypes from "prop-types";
+components\HomePage\HomePage.js:import React, { useState, useEffect } from "react";
+components\HomePage\HomePage.js:import { Link } from "react-router-dom";
+components\HomePage\HomePage.js:import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+components\HomePage\HomePage.js:import { faSpinner } from "@fortawesome/free-solid-svg-icons"; // Import FontAwesome spinner icon
+components\HomePage\HomePage.js:import ChartContent from "./ChartContent";
+components\HomePage\HomePage.js:import { fetchData } from "../utils/chartUtils";
+components\MakePlaylist\MakeAPlaylist.js:import React from "react";
+components\MakePlaylist\MakeAPlaylist.js:import { Formik, Field, Form, ErrorMessage } from "formik";
+components\MakePlaylist\MakeAPlaylist.js:import * as Yup from "yup";
+components\MakePlaylist\MakeAPlaylist.js:import { useNavigate } from "react-router-dom";
+components\MakePlaylist\MakeAPlaylist.js:import { ToastContainer, toast } from "react-toastify";
+components\MakePlaylist\MakeAPlaylist.js:import "react-toastify/dist/ReactToastify.css";
+components\MakePlaylist\MakeAPlaylist.js:import clickSound from "../../click.wav";
+components\MakePlaylist\MakeAPlaylist.js:import "./MakeAPlaylist.css";
+components\MakePlaylist\MakeAPlaylist2.js:import React, { useState } from "react";
+components\MakePlaylist\MakeAPlaylist2.js:import { useLocation, useNavigate } from "react-router-dom";
+components\MakePlaylist\MakeAPlaylist2.js:import Select, { components } from "react-select";
+components\MakePlaylist\MakeAPlaylist2.js:import CountryFlag from "react-country-flag";
+components\MakePlaylist\MakeAPlaylist2.js:import { countries } from "../../data/countries_flags";
+components\MakePlaylist\MakeAPlaylist2.js:import { genres } from "../../data/genres";
+components\MakePlaylist\MakeAPlaylist2.js:import "./MakeAPlaylist.css";
+components\MakePlaylist\MakeAPlaylist3.js:import React, { useEffect, useState } from 'react';
+components\MakePlaylist\MakeAPlaylist3.js:import axios from 'axios';
+components\MakePlaylist\MakeAPlaylist3.js:import { useLocation, useNavigate } from 'react-router-dom';
+components\MakePlaylist\MakeAPlaylist3.js:import ReactPieChart from '../building-blocks/PieChart'; // Import your PieChart component
+components\MakePlaylist\MakeAPlaylist3.js:import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+components\MakePlaylist\MakeAPlaylist3.js:import { faSpinner } from '@fortawesome/free-solid-svg-icons'; // Import spinner icon
+components\MakePlaylist\MakeAPlaylist3.js:import "./MakeAPlaylist.css";
+components\MakePlaylist\MakeAPlaylist4.js:import React, { useState } from "react";
+components\MakePlaylist\MakeAPlaylist4.js:import { useLocation } from "react-router-dom";
+components\MakePlaylist\MakeAPlaylist4.js:import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+components\MakePlaylist\MakeAPlaylist4.js:import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+components\MakePlaylist\MakeAPlaylist4.js:import { faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+components\MakePlaylist\MakePlaylistYearSelector.js:import React, { useState, useEffect } from 'react';
+components\MakePlaylist\MakePlaylistYearSelector.js:import { Formik, Form } from 'formik';
+components\MakePlaylist\MakePlaylistYearSelector.js:import { useNavigate, useLocation } from 'react-router-dom';
+components\MakePlaylist\MakePlaylistYearSelector.js:import ReactSlider from 'react-slider';
+components\MakePlaylist\MakePlaylistYearSelector.js:import { fetchAvailableYears } from '../utils/chartUtils'; // Import utility function
+components\MakePlaylist\MakePlaylistYearSelector.js:import clickSound from '../../click.wav';
+components\MakePlaylist\MakePlaylistYearSelector.js:import './MakeAPlaylist.css';
+components\RIAAPage\CertificationSelector.js:import React from "react";
+components\RIAAPage\CertificationSelector.js:import Select from "react-select";
+components\RIAAPage\CertificationSelector.js:import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+components\RIAAPage\CertificationSelector.js:import { faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+components\RIAAPage\GenreSelector.js:import React, { useEffect, useState } from "react";
+components\RIAAPage\GenreSelector.js:import Select from "react-select";
+components\RIAAPage\GenreSelector.js:import axios from "axios";
+components\RIAAPage\RIAAPage.js:import React, { useState, useEffect, useCallback } from "react";
+components\RIAAPage\RIAAPage.js:import YearSelector from "../building-blocks/YearSelector";
+components\RIAAPage\RIAAPage.js:import CertificationSelector from "../RIAAPage/CertificationSelector";
+components\RIAAPage\RIAAPage.js:import GenreSelector from "../RIAAPage/GenreSelector"; // Import GenreSelector
+components\RIAAPage\RIAAPage.js:import { fetchAvailableYearsRIAA, fetchRIAAData } from "../utils/chartUtils";
+components\RIAAPage\RIAAPage.js:import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+components\RIAAPage\RIAAPage.js:import { faCompactDisc, faSpinner } from '@fortawesome/free-solid-svg-icons'; // Import spinner icon
+components\utils\chartUtils.js:import axios from "axios";
+firebase.js:import { initializeApp } from 'firebase/app';
+firebase.js:import { getAuth } from 'firebase/auth';
+index.js:import React from 'react';
+index.js:import ReactDOM from 'react-dom/client';
+index.js:import App from './App';
+index.js:import reportWebVitals from './reportWebVitals';
+reportWebVitals.js:    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+setupTests.js:import '@testing-library/jest-dom';

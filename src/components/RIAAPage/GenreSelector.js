@@ -9,10 +9,10 @@ const GenreSelector = ({ selectedGenre, handleGenreChange }) => {
   useEffect(() => {
     const fetchGenres = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/get_available_genres");
+        const response = await axios.get("https://djplaylistcurator.com/api/get_available_genres");
 
         // Sort genres alphabetically and include "All Genres" at the top
-        const sortedGenres = ["ALL GENRES", ...response.data.sort((a, b) => a.localeCompare(b))];
+        const sortedGenres = ["ALL", ...response.data.sort((a, b) => a.localeCompare(b))];
         setGenres(sortedGenres);
         setLoading(false);
       } catch (error) {
